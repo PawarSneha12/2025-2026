@@ -1,0 +1,29 @@
+1021. Remove Outermost Parentheses
+
+1) a variable to store value
+2) maintain a counter
+3) if in string openting ( bracket found , after first occurance will increase counter value , and append in new string4
+4)if in string closing bracket ) found , decrease counter value , and append in new string 
+
+class Solution {
+    public String removeOuterParentheses(String s) {
+
+        StringBuilder sb = new StringBuilder();
+        int l=0;
+        for(char c:s.toCharArray()){
+        if(c=='('){
+            if(l>0) sb.append(c);
+            l++;
+        }
+        else {
+       if(c==')') 
+       {
+         l--;
+        if (l>0)sb.append(c);
+       }
+        }
+        }
+        return sb.toString();
+        
+    }
+}
