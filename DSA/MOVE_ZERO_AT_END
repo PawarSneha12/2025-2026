@@ -1,0 +1,22 @@
+https://leetcode.com/problems/move-zeroes/description/
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int j=0;
+        int []arr=new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                arr[j]=nums[i];
+                j++;
+            }
+        }
+       while(j<nums.length){
+        arr[j]=0;
+        j++;
+       } 
+ for(int i=0;i<nums.length;i++){
+    nums[i]=arr[i];
+ }
+ return ;
+    }
+}
