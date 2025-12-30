@@ -1,0 +1,62 @@
+169. Majority Element
+
+----ELEMENT THAT present in array half of the time or more than half 
+
+1) sort array 
+2) return and element at middle index of array 
+
+
+The Boyer-Moore Majority Voting Algorithm is a clever method to find the majority element 
+(an element that appears more than ⌊n/2⌋ times) in an array using linear time and constant space.
+
+🔑 Key Idea
+- If an element occurs more than half the time in the array, it will "outvote" all other elements combined.
+- The algorithm maintains:
+- Candidate: a potential majority element.
+- Count: a counter tracking support for the candidate.
+
+⚙️ Algorithm Steps
+- Initialization
+- Set candidate = None and count = 0.
+- First Pass (Find Candidate)
+- Traverse the array:
+- If count == 0, set candidate = current element and count = 1.
+- If current element == candidate, increment count.
+- Else, decrement count.
+- 👉 At the end of this pass, candidate will be the potential majority element.
+- Second Pass (Verification)
+- Count how many times candidate actually appears in the array.
+- If occurrences > ⌊n/2⌋, return candidate; otherwise, return "no majority element".
+
+📊 Example
+Array: [1, 1, 2, 1, 3, 1, 1]
+- Step 1: Candidate becomes 1, count fluctuates but stabilizes.
+- Step 2: Verify → 1 appears 5 times out of 7 (> 7/2).
+✅ Majority element = 1
+Array: [1, 2, 3]
+- Candidate may be 3, but verification shows no element > 1.5 times.
+❌ No majority element.
+
+-------------------------------------------------------
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length/2];        
+    }
+}
+
+---------------------------------------------
+
+class Solution {
+    public int majorityElement(int[] nums) {
+    /*    Arrays.sort(nums);
+        return nums[nums.length/2];   */
+         int count=0;
+         int candidates=0;
+        for(int x:nums){
+            if(count==0){
+                candidates=x;
+            }
+            count+=(x==candidates)?1:-1;}       return candidates;
+    }}
