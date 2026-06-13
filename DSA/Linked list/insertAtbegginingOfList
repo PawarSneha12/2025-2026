@@ -1,0 +1,6 @@
+Given List which is head of Linked List 
+
+class Node{
+int val;
+Node next;
+Node prev;}
