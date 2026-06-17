@@ -1,0 +1,43 @@
+Remove duplicated, keep distinct nodes only 
+1) creatge a dummy node to headle head removeal
+2) traverse through two pointer :prev (last confirm unique node) and cur .. current node
+3)if cur.val==cur.next.val skip all the duplicates nodes with some value.
+4)otherwise move prev 
+5)at last return dummy.next
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+
+       
+      //  ListNode prevP=null;
+        ListNode dummy = new ListNode(-1); // Dummy node to handle head removals
+        dummy.next=head;
+         ListNode cur=head;
+        ListNode prev=dummy;
+        while(cur!=null&&cur.next!=null){
+              if(cur.val==cur.next.val){
+                 while(cur.next!=null&&cur.val==cur.next.val){
+                   cur=cur.next;
+                 }
+                prev.next=cur.next;
+              }
+              else{
+                prev=prev.next;
+              }
+  cur=cur.next;
+        }
+return dummy.next;
+        
+    }
+}
