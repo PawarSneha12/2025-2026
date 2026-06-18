@@ -1,0 +1,35 @@
+206. Reverse Linked List
+
+to rverse a Linked List we use 3 pointers 
+1) previous pointer:- at start it point to Null
+2)current pointer:- at start it point to head
+3)next pointer:- at start it point to head.next, (next element of head)
+
+we iterate all over the Linked List;
+while iterating 
+1)we point cur.next to prev 
+and 
+2) then prev became cur and cur =next and next will move one step ahead;
+
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head==null||head.next==null){
+            return head;
+        }
+        ListNode cur=head;
+        ListNode prev=null;
+        ListNode Nnext =cur.next;
+        while(cur!=null){
+            cur.next=prev;
+            prev=cur;
+            cur=Nnext;
+            if(Nnext!=null){
+            Nnext=Nnext.next;
+            }
+        }
+        head=prev;
+        return head;
+        
+    }
+}
