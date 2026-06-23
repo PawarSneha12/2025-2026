@@ -1,0 +1,18 @@
+will use two poninters;
+1) one for read and other for Write.
+2)iterate through the end of the array
+if we get non zero element then we write it ;
+at the end ..............
+
+int w=0;
+for(int r=0;r<nums.length;r++){
+    if(nums[r]!=0){
+        nums[w]=nums[r];
+        w++;
+    }
+}
+while(w<nums.length){
+    nums[w++]=0;
+}
+    }
+}
