@@ -1,0 +1,40 @@
+448. Find All Numbers Disappeared in an Array
+
+bruth force apporch:- 
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+ArrayList<Integer> ans=new ArrayList<>();
+HashSet<Integer> HS= new HashSet<>();
+for(int i=0;i<nums.length;i++){
+    HS.add(nums[i]);
+}
+for(int i=1;i<=nums.length;i++){
+    if(!HS.contains(i)){
+        ans.add(i);
+    }
+}
+return ans;  
+    }
+}
+
+Optimal:- 
+
+
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+ArrayList<Integer> ans=new ArrayList<>();
+for(int i=0;i<nums.length;i++){
+    int ind=Math.abs(nums[i])-1;
+    if(nums[ind]>0){
+    nums[ind]*=-1;
+    }
+}
+for(int i=0;i<nums.length;i++){
+    if(nums[i]>0){
+        ans.add(i+1);
+    }
+}
+
+return ans;  
+    }
+}
