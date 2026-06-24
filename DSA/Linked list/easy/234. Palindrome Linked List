@@ -1,0 +1,47 @@
+//234. Palindrome Linked List
+
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+    ListNode middle=findMiddleNode(head);
+   middle= reverseLinkedList(middle);
+    ListNode temp2=middle;
+    ListNode temp=head;
+    while(temp2!=null){
+        if(temp.val!=temp2.val){
+            return false;
+        }
+        else{
+        temp=temp.next;
+        temp2=temp2.next;
+        }
+    }
+  return true;
+    }
+
+
+public ListNode findMiddleNode(ListNode head){
+     ListNode slow=head;
+     ListNode fast=head;
+     while(fast!=null&&fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+     }
+     return slow;
+}
+
+public ListNode reverseLinkedList(ListNode head){
+  ListNode  prev=null;
+   ListNode cur=head;
+   ListNode nextN=cur.next;
+    while(cur!=null){
+        cur.next=prev;
+        prev=cur;
+        cur=nextN;
+     if(nextN !=null){
+        nextN=nextN.next;
+     }
+    }
+    return prev;
+}
+}
