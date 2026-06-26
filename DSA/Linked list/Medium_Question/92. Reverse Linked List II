@@ -1,0 +1,51 @@
+//**
+
+92. Reverse Linked List II
+
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
+**//
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if(right==left){
+            return head;
+        }
+
+        ListNode prev=null;
+        ListNode current=head;
+        for(int i=0;current!=null&&i<left-1;i++){
+            prev=current;
+            current=current.next;
+        }
+        ListNode last=prev;
+        ListNode newEnd=current;
+        ListNode Next=current.next;
+        for(int i=0;current!=null&&i<right-left+1;i++){
+            current.next=prev;
+            prev=current;
+            current=Next;
+            if(Next!=null){
+            Next=Next.next;
+            }
+        }
+        if(last==null){
+            head=prev;
+        }
+        else{
+        last.next=prev;
+        }
+        newEnd.next=current;
+        return head;
+
+    }
+}
